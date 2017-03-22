@@ -21,3 +21,16 @@ instructors = File.read("db/instructor.json")
 insts = JSON.parse(instructors)
 
 #Now, let's fill the tables...
+subs.each do |s|
+  Subject.create(id_number: s["id"], name: s["name"])
+end
+
+cour.each do |c|
+  Course.create(name: c["name"], code: c["code"], description: c["description"],
+  independent_study: c["independent_study"])
+end
+
+insts.each do |i|
+  Instructor.create(id_number: i["id"], first: i["first"], last: i["last"],
+  email: i["email"])
+end
