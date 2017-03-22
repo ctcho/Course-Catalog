@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-include 'json'
+require 'json'
 
 #These will create arrays of the ActiveRecord entries we need.
 #subjects JSON file
@@ -21,6 +21,7 @@ instructors = File.read("db/instructor.json")
 insts = JSON.parse(instructors)
 
 #Now, let's fill the tables...
+#I will fill in the join tables soon.
 subs.each do |s|
   Subject.create(id_number: s["id"], name: s["name"])
 end
