@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+include 'json'
+
+#These will create arrays of the ActiveRecord entries we need.
+#subjects JSON file
+subjects = File.read("db/subject.json")
+subs = JSON.parse(subjects)
+
+#courses JSON file
+courses = File.read("db/course.json")
+cour = JSON.parse(courses)
+
+#instructors JSON file
+instructors = File.read("db/instructor.json")
+insts = JSON.parse(instructors)
+
+#Now, let's fill the tables...

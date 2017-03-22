@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome to the Brandeis Course Catalog</h1>
+
+<p>Here, you can view the available subjects, courses and instructors. You can even
+sign up to enroll in the courses of your choice.</p>
+
+<br>
+<h3>New to the site?</h3>
+<%= link_to "Sign up Here", new_user_path %>
+
+<br><br><br><br>
+<h3>Already signed up?</h3>
+<%= link_to "Sign In", login_path %>
