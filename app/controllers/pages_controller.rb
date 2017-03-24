@@ -8,4 +8,8 @@ class PagesController < ApplicationController
   def results
     @results = Course.search(params)
   end
+
+  def enroll
+    Course.enrollment(params)
+  end
 end

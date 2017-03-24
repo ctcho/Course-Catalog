@@ -9,8 +9,15 @@ class Course < ApplicationRecord
     elsif Integer(parameters[:subject_name]) == 0 #User left the Subject field blank
       Course.where("name LIKE ?", parameters[:course_name])
     else #User filled in both fields
-      Course.where("name LIKE ?", parameters[:course_name]).merge(
-      Course.joins(:subjects).where("name LIKE ?", parameters[:subject_name]))
+      c = Course.joins(:subjects).where("name LIKE ?", parameters[:subject_name])
+      c = c.where("name LIKE ?", parameters[:course_name])
+      return c
     end
+  end
+
+  def self.enrollment(parameters)
+      c = Course.find_by(name: parameters[:course_name])
+      u = User.find_by(name: parameters[:user_name])
+      u.courses << c #Only need to do this once, given the "has_and_belongs_to_many" relation.
   end
 end

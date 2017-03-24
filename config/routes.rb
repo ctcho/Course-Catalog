@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/search', to: 'pages#search'
   get '/results', to: 'pages#results'
+  get '/enroll', to: 'pages#enroll'
 
   resources :users
   root 'pages#home'

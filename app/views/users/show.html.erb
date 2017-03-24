@@ -23,5 +23,36 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <br>
+  <% if @user.courses.count > 0 %>
+  <h3>Course Enrollment</h3>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Code</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @user.courses.each do |course| %>
+        <tr>
+          <td><%= course.name %></td>
+          <td><%= course.code %></td>
+          <td><%= link_to 'Show More', course %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% else %>
+  You are not currently enrolled in any courses.
+
+  <% end %>
+</p>
+<br>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Log Out', logout_path, method: :delete %>
