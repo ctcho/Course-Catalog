@@ -1,0 +1,40 @@
+<h1>Course Search</h1>
+
+<% if logged_in? %>
+
+<%= link_to "Back to Profile Page", user_path(current_user) %>
+
+<p>Please select which course you wish to look for.</p>
+<p>Note that you can search using one or both fields.</p>
+<br>
+<%= form_tag(results_path, method: "get") do  %>
+  <strong>Search by Course Name</strong>
+  <br>
+    <%= text_field_tag(:course_name) %>
+    <br><br><br>
+  <strong>Search by Subject</strong>
+  <br>
+    <% subject_list = Subject.all.map { |subject| [subject.name, subject.id] } %>
+    <% subject_list = [["Pick a Subject", 0]] + subject_list %>
+    <%= select_tag :subject_name,
+     options_for_select(subject_list) %>
+    <br><br><br>
+  <%= submit_tag "Search", name: nil %>
+
+<% end %>
+
+<% else %>
+
+<h3>Our apologies.</h3>
+
+<p>You must be signed up to this site in order to search for courses.</p>
+
+<%= link_to "Sign In", login_path %>
+
+<br><br><br>
+
+<h3>New here?</h3>
+
+<%= link_to "Sign Up", new_user_path %>
+
+<% end %>

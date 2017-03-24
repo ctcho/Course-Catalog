@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
+<% if logged_in? %>
+
+<%= link_to "Back to Profile Page", user_path(current_user) %>
+<br>
+
 <h1>Instructors</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Id number</th>
       <th>First</th>
       <th>Last</th>
-      <th>Email</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,13 +19,9 @@
   <tbody>
     <% @instructors.each do |instructor| %>
       <tr>
-        <td><%= instructor.id_number %></td>
         <td><%= instructor.first %></td>
         <td><%= instructor.last %></td>
-        <td><%= instructor.email %></td>
-        <td><%= link_to 'Show', instructor %></td>
-        <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
-        <td><%= link_to 'Destroy', instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show More', instructor %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +29,18 @@
 
 <br>
 
-<%= link_to 'New Instructor', new_instructor_path %>
+<% else %>
+
+<h3>Our apologies.</h3>
+
+<p>You must be signed up to this site in order to view instructors.</p>
+
+<%= link_to "Sign In", login_path %>
+
+<br><br><br>
+
+<h3>New here?</h3>
+
+<%= link_to "Sign Up", new_user_path %>
+
+<% end %>

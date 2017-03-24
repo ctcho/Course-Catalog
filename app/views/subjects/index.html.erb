@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% if logged_in? %>
+
+<%= link_to "Back to Profile Page", user_path(current_user) %>
+<br>
+
 <h1>Subjects</h1>
 
 <table>
@@ -16,9 +21,6 @@
       <tr>
         <td><%= subject.id_number %></td>
         <td><%= subject.name %></td>
-        <td><%= link_to 'Show', subject %></td>
-        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
-        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +28,18 @@
 
 <br>
 
-<%= link_to 'New Subject', new_subject_path %>
+<% else %>
+
+<h3>Our apologies.</h3>
+
+<p>You must be signed up to this site in order to view subjects.</p>
+
+<%= link_to "Sign In", login_path %>
+
+<br><br><br>
+
+<h3>New here?</h3>
+
+<%= link_to "Sign Up", new_user_path %>
+
+<% end %>

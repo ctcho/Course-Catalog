@@ -27,11 +27,25 @@ subs.each do |s|
 end
 
 cour.each do |c|
-  Course.create(name: c["name"], code: c["code"], description: c["description"],
+  temp = Course.create(name: c["name"], code: c["code"], description: c["description"],
   independent_study: c["independent_study"])
+  c["subjects"].each do |subject_id| # Have to do this since each subject has a different id...
+    #temp.subjects << subs.select { |subject| subject["id"].eql?(subject_id["id"]) }
+    temp.subjects << Subject.where("id_number LIKE ?", subject_id["id"])
+  end
+  temp.save
 end
 
 insts.each do |i|
   Instructor.create(id_number: i["id"], first: i["first"], last: i["last"],
   email: i["email"])
+end
+
+#Need to do this again because of how the work flow goes.
+Subject.each do |s|
+  Course.each do |c|
+    if c.subjects.include?(s.id)
+      s.courses << c
+    end
+  end
 end

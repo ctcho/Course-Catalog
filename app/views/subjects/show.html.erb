@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<% if logged_in? %>
+
 <p>
   <strong>Id number:</strong>
   <%= @subject.id_number %>
@@ -12,3 +14,14 @@
 
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>
+
+<% else %>
+
+<h3>Huh...</h3>
+
+<p>How'd you get here? Must mean the app's missed something, or you're a hacker. You need
+  to be signed up in order to view any course.</p>
+
+<%= link_to "Back to Home", root_path %>
+
+<% end %>
