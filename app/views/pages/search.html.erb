@@ -1,13 +1,18 @@
 <h1>Course Search</h1>
-
+<br>
 <% if logged_in? %>
 
 <%= link_to "Back to Profile Page", user_path(current_user) %>
+<br>
 
 <p>Please select which course you wish to look for.</p>
-<p>Note that you can search using one or both fields.</p>
+<p>Note that you can search with one field by leaving the other blank, or you can fill in both
+  fields to narrow your search.</p>
+<p>All you need to do is select your parameters. The search will update as you do.</p>
+<p>Unfortunately, if the results do not show after typing, you need to reload the page.
+This happens whenever you access this page from an in-site link.</p>
 <br>
-<%= form_tag(results_path, method: "get") do  %>
+<%= form_tag(results_path, method: "get", id: "search_form", remote: true) do  %>
   <strong>Search by Course Name</strong>
   <br>
     <%= text_field_tag(:course_name) %>
@@ -19,7 +24,7 @@
     <%= select_tag :subject_name,
      options_for_select(subject_list) %>
     <br><br><br>
-  <%= submit_tag "Search", name: nil %>
+  <div id="results"><%= render 'results' %></div>
 
 <% end %>
 

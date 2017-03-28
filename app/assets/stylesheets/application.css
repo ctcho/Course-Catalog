@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+ body {
+   margin: 25px;
+   background: #ffffcc;
+ }
+
+ a:link, a:hover, a:active, a:visited {
+   background-color: #80bfff;
+   border: 1px solid grey;
+   padding: 3px;
+ }
+
+ div.table {
+   background-color: #F8F8FF;
+   padding: 20px;
+   border-left: 2px solid lightgrey;
+   border-top: 1px solid lightgrey;
+   border-bottom: 1px solid lightgrey;
+   border-right: 2px solid lightgrey;
+ }
+
+ table {
+   background: #F0FFFF;
+   border: 1px solid #0066cc;
+   width: 75%;
+ }
+
+ th {
+   padding: 10px;
+   height: 50px;
+ }
+
+ tr {
+   padding: 10px;
+   height: 50px;
+   border-right: 3px solid #0066cc;
+   border-top: 1px solid #0066cc;
+   border-left: 2px solid #0066cc;
+   border-bottom: 1px solid grey;
+ }
+
+ input[type=text], input[type=email], input[type=password], select {
+   background-color: lightgrey;
+   width: 30%;
+ }

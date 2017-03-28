@@ -1,27 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <% if logged_in? %>
-
+<div class="table">
+  <h2><%= @instructor.first + " " + @instructor.last %></h2>
 <p>
-  <strong>Id number:</strong>
+  <strong>Id:</strong>
   <%= @instructor.id_number %>
-</p>
-
-<p>
-  <strong>First:</strong>
-  <%= @instructor.first %>
-</p>
-
-<p>
-  <strong>Last:</strong>
-  <%= @instructor.last %>
 </p>
 
 <p>
   <strong>Email:</strong>
   <%= @instructor.email %>
 </p>
-
+</div>
 <%= link_to 'Back to Instructor Listing', instructors_path %>
 
 <% else %>

@@ -1,11 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <% if logged_in? %>
+<div class="table">
 <p>
-  <strong>Name:</strong>
-  <%= @course.name %>
+  <h2><%= @course.name %><h2>
 </p>
-
 <p>
   <strong>Code:</strong>
   <%= @course.code %>
@@ -21,10 +20,27 @@
   <%= @course.independent_study %>
 </p>
 
-<%= link_to "Enroll", enroll_path({:course_name => @course.name, :user_name => current_user.name}) %>
-<br><br>
+<p>
+  <strong>Listed Under:</strong>
+  <br>
+  <% @course.subjects.each do |subject| %>
+    <%= subject.name %> |
+    <%= subject.id_number %>
+    <br>
+  <% end %>
+</p>
 
-<%= link_to 'Back to Course Listing', courses_path %>
+</div>
+<% if !current_user.courses.exists?(name: @course.name) %>
+  <%= link_to "Enroll", enroll_path({:course_name => @course.name, :user_name => current_user.name}) %> |
+<% else %>
+  <br>
+  <h4>You are already enrolled in this course.</h4>
+  <%= link_to 'Back to Profile Page', user_path(current_user) %> |
+<% end %>
+
+<%= link_to 'Course Listing', courses_path %> |
+<%= link_to 'Search for Courses', search_path %>
 
 <% else %>
 

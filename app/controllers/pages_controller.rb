@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
 
   def search
+    @results = Course.search(params)
   end
 
   def results
@@ -10,6 +11,7 @@ class PagesController < ApplicationController
   end
 
   def enroll
+    @course_name = params[:course_name]
     Course.enrollment(params)
   end
 end

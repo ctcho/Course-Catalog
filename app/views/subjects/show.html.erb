@@ -1,17 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <% if logged_in? %>
-
+<div class="table">
+<h2><%= @subject.name %></h2>
 <p>
   <strong>Id number:</strong>
   <%= @subject.id_number %>
 </p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
-
+</div>
 <%= link_to 'Edit', edit_subject_path(@subject) %> |
 <%= link_to 'Back', subjects_path %>
 

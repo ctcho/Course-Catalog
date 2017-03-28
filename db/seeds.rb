@@ -40,12 +40,3 @@ insts.each do |i|
   Instructor.create(id_number: i["id"], first: i["first"], last: i["last"],
   email: i["email"])
 end
-
-#Need to do this again because of how the work flow goes.
-Subject.each do |s|
-  Course.each do |c|
-    if c.subjects.include?(s.id)
-      s.courses << c
-    end
-  end
-end
